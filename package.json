@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "rm -fr dist/* && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json && ./fixup",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tsc && node dist/esm/test.js && node dist/cjs/test.js"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,8 @@
   "devDependencies": {
     "@types/node": "^18.15.11",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "things": "^4.6.4"
   }
 }
