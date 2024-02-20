@@ -1,6 +1,6 @@
 {
   "name": "recursivetext",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Recursive teXt",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
