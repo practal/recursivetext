@@ -1,5 +1,5 @@
 import { Relation, Test, assertEqT, assertT, configureDebugging, runTests } from "things";
-import { RX, SafeRX, compareDocuments, displayDocument, readDocument, simpleRX, writeDocument } from "./rx.js";
+import { RX, SafeRX, compareDocuments, displayDocument, readDocument, simpleAndSafeRX, simpleRX, writeDocument } from "./rx.js";
 import { assertCrashT } from "things";
 
 export function createExampleDocument<D, B, L>(rx : RX<D, B, L>, index : number = 0) : D {
@@ -181,7 +181,7 @@ for (const index of [1, 2, 3, 5, 6, 9, 12, 13, 14]) {
 // All Examples, made safe
 for (const index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]) {
     Test(() => {
-        let rx = new SafeRX(simpleRX);
+        let rx = simpleAndSafeRX;
         testReadWrite(rx, createExampleDocument(rx, index));
     }, `Safe RX Example ${index}`);
 }

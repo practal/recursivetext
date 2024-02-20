@@ -99,6 +99,7 @@ class SimpleRX implements RX<SimpleDocument, SimpleBlock, SimpleLine> {
  * Implements RX<SimpleDocument, SimpleBlock, SimpleLine>.
  */
 export let simpleRX = new SimpleRX();
+export let simpleAndSafeRX = new SafeRX(new SimpleRX());
 
 const LF = "\n";
 const CR = "\r";
