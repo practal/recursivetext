@@ -42,10 +42,7 @@ export class SafeRX<Document, Block, Line> implements RX<Document, Block, Line> 
     }
     block(...items: (Block | Line)[]): Block {
         if (items.length === 0) return this.#inner.block(this.#inner.line());
-        if (!this.#inner.isLine(items[0])) {
-            if (items.length === 1) return items[0];
-            else return this.#inner.block(this.#inner.line(), ...items);
-        }
+        if (!this.#inner.isLine(items[0])) return this.#inner.block(this.#inner.line(), ...items);
         return this.#inner.block(...items);
     }
     document(...blocks: Block[]): Document {
