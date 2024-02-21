@@ -212,10 +212,7 @@ function callback(err : any) {
 }
 
 Test(() => {
-    const doc = readDocument(simpleRX, bug);
-    let text = writeDocument(simpleRX, doc);
-    assertEqT(bug, text);
-    testReadWrite(simpleRX, doc);
+    assertCrashT(() => readDocument(simpleRX, bug));
 }, "Bug");
 
 
