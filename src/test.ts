@@ -2,6 +2,19 @@ import { Relation, Test, assertEqT, assertT, configureDebugging, runTests } from
 import { RX, SafeRX, compareDocuments, displayDocument, readDocument, simpleAndSafeRX, simpleRX, writeDocument } from "./rx.js";
 import { assertCrashT } from "things";
 
+export const bug = `    block
+        block2
+            block3
+                block4
+                    block5
+                        block6
+                            block7
+                                block8
+                                weird
+                                    block9
+                                        block10
+                                            block11`;
+
 export function createExampleDocument<D, B, L>(rx : RX<D, B, L>, index : number = 0) : D {
 
     function block(...items : (L | B)[]) : B {
@@ -197,6 +210,14 @@ Test(() => {
 function callback(err : any) {
     console.log("File has been written! err = " + err);
 }
+
+Test(() => {
+    const doc = readDocument(simpleRX, bug);
+    let text = writeDocument(simpleRX, doc);
+    assertEqT(bug, text);
+    testReadWrite(simpleRX, doc);
+}, "Bug");
+
 
 //writeFile("/Users/stevenobua/Repositories/parlay/playground/zero.txt", "Hey th\0\0\u0000\u0001\u0002\u001bere!", "utf8", callback);
 
