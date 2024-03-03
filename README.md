@@ -9,13 +9,13 @@ npm install recursivetext
 
 Usage:
 ```
-import { readDocument, writeDocument, simpleAndSafeRX } from "recursivetext";
+import { readDocument, writeDocument, simpleRX } from "recursivetext";
 
 const plaintext = "..."; // some text you obtained from somewhere
 
 // Read RX from plain text
-const rx = readDocument(simpleAndSafeRX, plaintext);
+const rx = readDocument(simpleRX, plaintext);
 
 // Write RX as plain text
-const saved_as_plaintext = writeDocument(simpleAndSafeRX, rx); 
+const saved_as_plaintext = writeDocument(simpleRX, rx); 
 ```
