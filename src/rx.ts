@@ -306,8 +306,9 @@ export function readDocument<D, B, L>(rx : RX<D, B, L>, input : string) : D {
             blockLines.push(lines[row + rows].substring(indentation + indent));
             rows += 1;
         }
-        let r = 0;
         let parts : Part[] = [];
+        parts.push(rLine(blockLines[0]));
+        let r = 1;
         while (r < rows) {
             let line = blockLines[r];
             if (!startsWithSpaces(indent, line)) {

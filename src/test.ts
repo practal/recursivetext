@@ -212,8 +212,8 @@ function callback(err : any) {
 }
 
 Test(() => {
-    assertCrashT(() => readDocument(simpleRX, bug));
-}, "Bug");
+    () => readDocument(simpleRX, bug);
+}, "PreviousBug");
 
 
 //writeFile("/Users/stevenobua/Repositories/parlay/playground/zero.txt", "Hey th\0\0\u0000\u0001\u0002\u001bere!", "utf8", callback);
