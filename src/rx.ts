@@ -100,10 +100,10 @@ class SimpleRX implements RX<SimpleDocument, SimpleBlock, SimpleLine> {
 export let simpleRX = new SimpleRX();
 export let simpleAndSafeRX = new SafeRX(new SimpleRX());
 
-const LF = "\n";
-const CR = "\r";
-const SPACE = "\x20";
-const NON_BREAKING_SPACE = "\xA0";
+export const LF = "\n";
+export const CR = "\r";
+export const SPACE = "\x20";
+export const NON_BREAKING_SPACE = "\xA0";
 
 export function isSanitized(text : string) : boolean {
     if (text.startsWith(NON_BREAKING_SPACE)) return false;
