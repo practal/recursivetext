@@ -278,6 +278,10 @@ function makeLines(input : string) : string[] {
     return lines;
 }
 
+function sanitizeLines(lines : string[]) : string[] {
+    return lines.map(line => line.replace(/[\n\r]/g, ' '));
+}
+
 function startsWithSpaces(n : nat, s : string) : boolean {
     for (const c of s) {
         if (c === SPACE) {
@@ -290,7 +294,7 @@ function startsWithSpaces(n : nat, s : string) : boolean {
     return n <= 0;
 }
 
-export function readDocument<D, B, L>(rx : RX<D, B, L>, input : string) : D {
+export function readDocument<D, B, L>(rx : RX<D, B, L>, input : string | string[]) : D {
     type Part = L | B
 
     const indent = 2;
@@ -332,7 +336,7 @@ export function readDocument<D, B, L>(rx : RX<D, B, L>, input : string) : D {
 
     let row = 0;
     let result : B[] = [];
-    const lines = makeLines(input);
+    const lines = typeof input === "string" ? makeLines(input) : sanitizeLines(input);
     while (row < lines.length) {
         const block = rBlock(lines, row, 0);
         result.push(block.result);
