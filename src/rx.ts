@@ -247,7 +247,7 @@ export function writeDocument<D, B, L>(rx : RX<D, B, L>, document : D, crlf : bo
     return wDocument(document).join(newline);
 }
 
-function makeLines(input : string) : string[] {
+export function makeLines(input : string) : string[] {
     let lines : string[] = [];
     function write(s : string) {
         lines[lines.length - 1] += s;
@@ -278,7 +278,7 @@ function makeLines(input : string) : string[] {
     return lines;
 }
 
-function sanitizeLines(lines : string[]) : string[] {
+export function sanitizeLines(lines : string[]) : string[] {
     return lines.map(line => line.replace(/[\n\r]/g, ' '));
 }
 
