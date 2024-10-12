@@ -30,7 +30,7 @@
     "@types/node": "^18.15.11",
     "typescript": "^5.2.2"
   },
-  "dependencies": {
-    "things": "^4.6.4"
+  "peerDependencies": {
+    "things": "^4.8.5"
   }
 }
